@@ -1,9 +1,9 @@
 import express from "express";
-import { getAllRaces, getRaceById } from "../controllers/raceController";
+import { getRaces } from "../controllers/raceController";
 
 const router = express.Router();
 
-router.get("/", getAllRaces);
-router.get("/:id", getRaceById);
+router.get("/", getRaces);
+//router.get("/:id", getRaceById);
 
 export default router;

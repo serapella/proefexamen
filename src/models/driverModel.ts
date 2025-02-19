@@ -1,32 +1,54 @@
-import mongoose, { Document, Schema, Model } from "mongoose";
-
-export interface IDriver extends Document {
-  driver_id: string;
-  permanentNumber: string;
-  code: string;
-  countryCode: string;
-  url: string;
-  givenName: string;
-  familyName: string;
-  dateOfBirth: string;
-  nationality: string;
-  image: string;
-}
-
-const DriverSchema: Schema<IDriver> = new Schema({
-  driver_id: { type: String, required: true, unique: true },
-  permanentNumber: { type: String, required: true },
-  code: { type: String, required: true },
-  countryCode: { type: String, required: true },
-  url: { type: String, required: true },
-  givenName: { type: String, required: true },
-  familyName: { type: String, required: true },
-  dateOfBirth: { type: String, required: true },
-  nationality: { type: String, required: true },
-  image: { type: String, required: true },
-});
-
-const Driver: Model<IDriver> = mongoose.model<IDriver>("Driver", DriverSchema);
-
-export { Driver };
-export default Driver;
+import mongoose from "mongoose";
+const driverSchema = new mongoose.Schema(
+  {
+    driver_id: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+    permanentNumber: {
+      type: Number,
+      required: true,
+      trim: true,
+    },
+    countryCode: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+    url: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+    givenName: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+    familyName: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+    dateOfBirth: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+    nationality: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+    image: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+  },
+  {
+    timestamps: true,
+  }
+);
+export const Driver = mongoose.model("Driver", driverSchema);

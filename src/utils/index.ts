@@ -1,10 +1,10 @@
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 import process from "process";
-import Race from "../models/raceModel";
+import { Race } from "../models/raceModel";
 import Circuit from "../models/circuitModel";
 import Team from "../models/teamModel";
-import Driver from "../models/driverModel";
+import { Driver } from "../models/driverModel";
 
 dotenv.config();
 

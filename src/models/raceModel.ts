@@ -1,21 +1,46 @@
 import mongoose from "mongoose";
-
-const raceResultSchema = new mongoose.Schema({
-  position: Number,
-  driver_id: String,
-  time: Number,
-  points: Number,
-});
-
+import { Types } from "mongoose";
 const raceSchema = new mongoose.Schema({
-  round: Number,
-  circuit_id: String,
-  date: Date,
-  sprint_race: Boolean,
-  fastest_lap: String,
-  race_results: [raceResultSchema],
+  round: {
+    type: Number,
+    required: true,
+  },
+  circuit_id: {
+    type: String,
+    required: true,
+  },
+  date: {
+    type: String,
+    required: true,
+  },
+  sprint_race: {
+    type: Boolean,
+    default: false,
+  },
+  fastest_lap: {
+    type: String,
+    default: "",
+  },
+  race_results: [
+    {
+      position: {
+        type: Number,
+        required: true,
+      },
+      driver_id: {
+        type: String,
+        required: true,
+        trim: true,
+      },
+      time: {
+        type: Number,
+        required: true,
+      },
+      points: {
+        type: Number,
+        required: true,
+      },
+    },
+  ],
 });
-
-const Race = mongoose.model("Race", raceSchema);
-
-export default Race;
+export const Race = mongoose.model("Race", raceSchema);

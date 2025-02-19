@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
-import Driver from "../models/driverModel";
+import { Error as MongooseError } from "mongoose";
+import { Driver } from "../models/driverModel";
 
 export const getAllDrivers = async (req: Request, res: Response) => {
   try {
