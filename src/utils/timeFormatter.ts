@@ -21,3 +21,5 @@ export const formatRaceTime = (
 
   return timeInMs.toString();
 };
+
+export default formatRaceTime;

@@ -2,6 +2,10 @@ import { Request, Response } from "express";
 import { Race } from "../models/raceModel";
 import { Driver } from "../models/driverModel";
 import { Error as MongooseError } from "mongoose";
+import { formatRaceTime } from "../utils/timeFormatter";
+
+const formattedTime = formatRaceTime(123456, true, 1);
+console.log(formattedTime);
 
 export const getRaces = async (req: Request, res: Response) => {
   try {

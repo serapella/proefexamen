@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import Race from "../models/raceModel";
+import { Race } from "../models/raceModel";
 import Team from "../models/teamModel";
 
 export const getAllRaces = async (req: Request, res: Response) => {
