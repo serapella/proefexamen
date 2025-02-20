@@ -4,6 +4,7 @@ import { Driver } from "../models/driverModel";
 import { Error as MongooseError } from "mongoose";
 import { formatRaceTime } from "../utils/timeFormatter";
 
+// Test de formatterfunctie (optioneel)
 const formattedTime = formatRaceTime(123456, true, 1);
 console.log(formattedTime);
 
@@ -33,9 +34,18 @@ export const getRaces = async (req: Request, res: Response) => {
     const racesWithDriverDetails = races.map((race) => {
       const raceResultsWithDriverDetails = race.race_results.map((result) => {
         const driverDetails = driverMap.get(result.driver_id);
+
+        // Voeg de geformatteerde tijd toe (indien nodig op basis van ?format=true in de query)
+        const formattedTime = formatRaceTime(
+          result.time,
+          req.query.format === "true",
+          result.position
+        );
+
         return {
           ...result.toObject(), // Mongoose-document omzetten naar JS-object
           driver_id: driverDetails || null, // Voeg driver details (incl. vlag) toe of null als de coureur niet bestaat
+          time: formattedTime, // Toevoegen van de geformatteerde tijd
         };
       });
 
