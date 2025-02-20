@@ -14,6 +14,10 @@ const port = process.env.PORT || 3000;
 // Middleware to parse JSON requests
 app.use(express.json());
 
+app.get("/", (req, res) => {
+  res.send("Welcome to the Formula1 API!");
+});
+
 // Use Routes
 app.use("/races", raceRoutes);
 app.use("/teams", teamRoutes);
